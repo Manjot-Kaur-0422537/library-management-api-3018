@@ -1,11 +1,10 @@
-import { initializeApp, cert, ServiceAccount } from "firebase-admin/app";
-import { getFirestore } from "firebase-admin/firestore";
-import * as serviceAccount from '../../../../final-project-3018-31d99-firebase-adminsdk-fbsvc-c710304088.json';
+import * as admin from "firebase-admin";
+import serviceAccount from "../../../../final-project-3018-31d99-firebase-adminsdk-fbsvc-c710304088.json";
 
-initializeApp({
-  credential: cert(serviceAccount as ServiceAccount),
-});
-
-const db = getFirestore();
-
-export { db };
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount as admin.ServiceAccount)
+  });
+}
+export const db = admin.firestore();   
+export default admin;

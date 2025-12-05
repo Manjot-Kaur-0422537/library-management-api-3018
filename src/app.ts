@@ -5,6 +5,7 @@ import booksRoutes from './api/v1/routes/books.routes';
 import authorsRoutes from './api/v1/routes/authors.routes';
 import borrowRoutes from './api/v1/routes/borrow.routes';
 import swaggerUi from 'swagger-ui-express';
+import rolesRoutes from "./api/v1/routes/roles.routes";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use('/api/v1/books', booksRoutes);
 app.use('/api/v1/authors', authorsRoutes);
 app.use('/api/v1/borrow', borrowRoutes);
+app.use("/api/v1/roles", rolesRoutes);
 
 app.get('/', (_req, res) => res.json({ message: 'Library Management API - v1' }));
 
